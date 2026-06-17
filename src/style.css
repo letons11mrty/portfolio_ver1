@@ -5,7 +5,7 @@
 }
 
 body {
-  height: 600vh; /* 6 sections */
+  height: 100vh;
   background: #f8f8f8;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   overflow-x: hidden;
@@ -513,9 +513,19 @@ p {
     left: 8vw;
   }
 
+  .nav-dots {
+    right: auto;
+    left: 50%;
+    top: auto;
+    bottom: 1rem;
+    transform: translateX(-50%);
+    flex-direction: row;
+    gap: 0.8rem;
+  }
+
   .scroll-indicator {
     left: 50%;
-    bottom: 1.5rem;
+    bottom: 3.5rem;
     transform: translateX(-50%);
     flex-direction: row-reverse;
     gap: 0.5rem;

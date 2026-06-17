@@ -212,29 +212,20 @@ function jumpToSection(index) {
   requestAnimationFrame(() => window.addEventListener('scroll', onScroll, { passive: true }));
 }
 
-// ── Scroll ────────────────────────────────────────────────────────────────────
+// ── Wheel ────────────────────────────────────────────────────────────────────
 
-let scrollTimer = null;
-
-function onScroll() {
-  const progress   = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-  const newSection = Math.min(Math.floor(progress * TOTAL), TOTAL - 1);
-
-  if (newSection === currentSection) return;
-
-  pendingSection = newSection;
-
-  if (scrollTimer) clearTimeout(scrollTimer);
-  scrollTimer = setTimeout(() => {
-    scrollTimer = null;
-    if (pendingSection !== currentSection && !isAnimating) {
-      goToSection(pendingSection);
-    }
-  }, 80);
-}
+let wheelCooldown = false;
 
 if (window.innerWidth > 768) {
-  window.addEventListener('scroll', onScroll, { passive: true });
+  document.addEventListener('wheel', e => {
+    e.preventDefault();
+    if (wheelCooldown || isAnimating) return;
+    const dir = e.deltaY > 0 ? 1 : -1;
+    const next = Math.min(Math.max(currentSection + dir, 0), TOTAL - 1);
+    goToSection(next);
+    wheelCooldown = true;
+    setTimeout(() => { wheelCooldown = false; }, 900);
+  }, { passive: false });
 }
 
 // ── Touch swipe (mobile) ──────────────────────────────────────────────────────
