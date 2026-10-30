@@ -1,0 +1,173 @@
+/* Every project has its own art direction; only device construction is shared. */
+.timeline-card .timeline-image.project-cover{display:block;position:relative;padding:0;overflow:hidden;isolation:isolate;background:#e8e5de;color:#20201e;container-type:size}.timeline-card .project-cover img{display:block;max-width:none;transform:none;box-shadow:none;transition:none}.cover-photo{position:absolute;inset:0;z-index:-2;overflow:hidden}.timeline-card .cover-photo img{width:100%;height:100%;object-fit:cover}.cover-copy{position:absolute;z-index:4}.cover-copy strong{display:block;font-weight:400;letter-spacing:-.06em;line-height:.95}.cover-copy p{font-size:clamp(8px,1.6cqw,14px);line-height:1.9;letter-spacing:.05em;margin:20px 0 0}.cover-eyebrow{display:block;font:clamp(6px,.95cqw,10px) monospace;letter-spacing:.17em;line-height:1.8;margin-bottom:22px}.cover-open{position:absolute;bottom:16px;right:20px;z-index:10;font:7px monospace;letter-spacing:.08em;display:flex;align-items:center;gap:18px;color:inherit}.cover-open>span{font:18px Arial}.device-laptop{position:absolute;z-index:3;filter:drop-shadow(0 22px 18px #0005)}.device-display{position:relative;background:#17191c;padding:2.5% 1.8% 3%;border:1px solid #777b7e;border-radius:10px 10px 3px 3px;box-shadow:inset 0 0 0 2px #090b0d}.device-camera{position:absolute;width:3px;height:3px;background:#444b58;border-radius:50%;top:1.1%;left:50%}.device-screen{position:relative;overflow:hidden;background:#101112}.device-laptop .device-screen{aspect-ratio:1.55}.timeline-card .device-laptop .device-screen img{width:100%;height:100%;object-fit:cover;object-position:top}.laptop-base{position:absolute;top:100%;left:-7%;width:114%;height:9px;border-radius:1px 1px 50% 50% / 1px 1px 80% 80%;background:linear-gradient(#c6c8c9,#676a6d 65%,#353638);box-shadow:0 2px 2px #0005}.laptop-base:after{content:'';position:absolute;left:40%;top:0;width:20%;height:3px;background:#818487;border-radius:0 0 7px 7px}.device-phone{position:absolute;z-index:5;padding:18px 5px 7px;background:#161819;border:1px solid #8c8e8c;border-radius:30px;box-shadow:inset 0 0 0 2px #050607,9px 22px 35px #0003;aspect-ratio: .475}.device-phone .device-screen{width:100%;height:100%;border-radius:15px 15px 23px 23px;background:#f7f5ef}.timeline-card .device-phone .device-screen img{width:100%;height:100%;object-fit:cover;object-position:top}.phone-speaker{position:absolute;top:7px;left:40%;width:20%;height:3px;border-radius:4px;background:#525456}
+/* Eve: a dark concert poster, with a single wide computer in the foreground. */
+.timeline-card .cover-eve{background:#080d17;color:#f2f3f4}.eve-portrait{right:38%;z-index:-2}.timeline-card .eve-portrait img{object-position:50% 30%;filter:saturate(.75)}.cover-eve:before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#06101a10,#080d1780 40%,#080d17 76%),linear-gradient(0deg,#080d17,transparent 80%)}.eve-copy{left:7%;top:10%}.eve-copy strong{font-family:'Bodoni Moda',serif;font-size:25cqw;line-height:.82;letter-spacing:-.07em}.eve-copy p{margin-top:24px;font-size:1.2cqw;letter-spacing:.18em}.eve-computer{width:64%;right:5%;bottom:12%;transform:perspective(1000px) rotateY(-7deg) rotateZ(1deg)}.cover-note{position:absolute;left:7%;bottom:6%;font:7px monospace;letter-spacing:.14em;color:#afbacb}
+/* Lumos: autumn and winter meet behind a warm silver laptop and a mobile screen. */
+.timeline-card .cover-lumos{color:#352b21;background:#e4ddd0}.season-autumn{right:48%;opacity:.6}.season-winter{left:52%;opacity:.75}.cover-lumos:before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(#efe9debd,transparent 62%,#c8b99a66)}.lumos-copy{top:7%;left:0;width:100%;text-align:center}.lumos-copy strong{font-family:'Bodoni Moda',serif;font-size:7.6cqw;letter-spacing:-.045em}.lumos-copy i{font-style:normal}.lumos-copy .cover-eyebrow{margin-bottom:10px}.lumos-copy p{font-size:1.05cqw;margin-top:10px}.lumos-computer{width:65%;left:8%;bottom:10%;transform:rotate(-3deg)}.lumos-phone{height:63%;right:9%;bottom:7%;transform:rotate(7deg);background:#dedad0;border-color:#f8f6ef;box-shadow:inset 0 0 0 2px #a7a59d,9px 22px 35px #0003}.lumos-phone .phone-speaker{background:#85857c}
+/* Beauty: an editorial spread, photography on the left and a tall phone on the right. */
+.timeline-card .cover-beauty{background:#ebe7e1;color:#342c29}.beauty-print{right:63%;z-index:-1}.timeline-card .beauty-print img{object-position:50% 38%;filter:saturate(.65)}.beauty-copy{left:31%;top:15%}.beauty-copy .cover-eyebrow{font-size:.85cqw;margin-left:4px}.beauty-copy strong{font-family:'Bodoni Moda',serif;font-size:10.8cqw;line-height:.88;letter-spacing:-.065em}.beauty-copy strong i{font-style:italic;padding-left:5cqw}.beauty-copy p{font-size:1.05cqw;margin-left:5cqw;margin-top:20px}.beauty-phone{height:77%;right:6%;bottom:8%;transform:rotate(-5deg)}.beauty-issue{position:absolute;top:20px;left:16px;writing-mode:vertical-rl;font:7px monospace;letter-spacing:.16em;color:#fff}.beauty-edition{position:absolute;bottom:8%;left:41%;font:7px monospace;letter-spacing:.12em;line-height:1.8}
+/* Sukima: a cinematic landscape, Japanese title, and a device designed for the ride. */
+.timeline-card .cover-sukima{background:#17212e;color:#fff}.timeline-card .sukima-landscape img{object-position:center;filter:saturate(.7)}.cover-sukima:before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#08111dd9,#08111d33 75%),linear-gradient(0deg,#08111d77,transparent)}.sukima-copy{left:8%;top:16%}.sukima-copy strong{font-family:'Noto Sans JP',sans-serif;font-size:7.5cqw;font-weight:400;line-height:1.5;letter-spacing:.18em}.sukima-copy p{font-size:1.15cqw;margin-top:18px;letter-spacing:.13em}.sukima-phone{height:83%;right:14%;bottom:6%;transform:rotate(8deg)}.sukima-route{position:absolute;left:8%;bottom:7%;font:7px monospace;letter-spacing:.1em;line-height:1.9;color:#d9dfe2}
+/* Hacolio: warm shelving, two actual product screens, and a friendly wordmark. */
+.timeline-card .cover-hacolio{background:#ded8cc;color:#40382f}.hacolio-copy{left:7%;top:26%;width:44%}.hacolio-copy strong{font-size:9.5cqw;letter-spacing:-.075em}.hacolio-copy p{font-size:1.15cqw;letter-spacing:.03em}.hacolio-label{display:block;margin-top:30px;font-size:.9cqw;letter-spacing:.04em;color:#746957}.hacolio-shelf{position:absolute;inset:0;z-index:-1;background:linear-gradient(115deg,#f8f5ed99,transparent 70%)}.hacolio-shelf>span{position:absolute;height:3%;background:#cabfa8;box-shadow:0 10px 18px #75644520;border-top:1px solid #e9e1d3;right:-10%;width:50%;transform:skewY(-12deg)}.hacolio-shelf>span:nth-child(1){top:22%}.hacolio-shelf>span:nth-child(2){top:54%}.hacolio-shelf>span:nth-child(3){top:88%}.hacolio-home-phone{height:72%;right:24%;bottom:5%;transform:rotate(-9deg);opacity:.9}.timeline-card .project-cover .hacolio-chat-device{position:absolute;z-index:6;height:88%;width:auto;max-width:38%;object-fit:contain;right:5%;bottom:4%;filter:drop-shadow(8px 15px 18px #51463240);transform:rotate(5deg)}.cover-hacolio .cover-open{color:#514637}
+@media(max-width:800px){.cover-eyebrow{font-size:6px;letter-spacing:.08em;margin-bottom:12px}.cover-open{bottom:10px;right:12px;font-size:6px;gap:10px}.cover-open>span{font-size:14px}.device-phone{padding:12px 3px 4px;border-radius:20px}.device-phone .device-screen{border-radius:10px 10px 15px 15px}.phone-speaker{top:5px;height:2px}.device-display{border-radius:5px 5px 2px 2px}.laptop-base{height:5px}.eve-portrait{right:0}.cover-eve:before{background:linear-gradient(0deg,#080d17 15%,#080d1733 100%)}.eve-copy{left:8%;top:9%}.eve-copy strong{font-size:40cqw}.eve-copy p{font-size:7px;margin-top:12px}.eve-computer{width:84%;right:5%;bottom:18%;transform:rotate(3deg)}.cover-note{font-size:5px;left:8%;bottom:9%;max-width:60%;line-height:1.8}.lumos-copy{top:8%;padding:0 8%}.lumos-copy strong{font-size:13cqw;line-height:1.1}.lumos-copy p{font-size:7px;margin-top:10px}.lumos-copy i{display:block}.lumos-computer{width:85%;left:4%;bottom:27%}.lumos-phone{height:44%;right:8%;bottom:8%;transform:rotate(8deg)}.season-autumn{right:44%}.season-winter{left:56%}.beauty-print{right:48%}.beauty-copy{left:24%;top:10%}.beauty-copy strong{font-size:20cqw}.beauty-copy .cover-eyebrow{font-size:6px}.beauty-copy p{font-size:6px;margin-top:12px}.beauty-phone{height:57%;right:8%;bottom:8%}.beauty-issue{font-size:5px;left:10px;top:14px}.beauty-edition{font-size:5px;left:7%;bottom:8%;max-width:30%}.sukima-copy{left:8%;top:9%}.sukima-copy strong{font-size:14cqw;line-height:1.4}.sukima-copy .cover-eyebrow{font-size:5px}.sukima-copy p{font-size:6px;margin-top:10px}.sukima-phone{height:57%;right:11%;bottom:6%}.sukima-route{font-size:5px;left:8%;bottom:8%;max-width:25%;line-height:1.8}.hacolio-copy{top:9%;left:8%;width:84%}.hacolio-copy strong{font-size:20cqw}.hacolio-copy p{font-size:7px;margin-top:10px}.hacolio-label{font-size:6px;margin-top:12px}.hacolio-home-phone{height:49%;right:36%;bottom:8%}.timeline-card .project-cover .hacolio-chat-device{height:60%;max-width:58%;right:6%;bottom:5%}}
+/* Fit computers to the cover height as well as its width. */
+.eve-computer{width:min(64%,90cqh)}.lumos-computer{width:min(65%,81cqh);left:10%}
+@media(max-width:800px){.eve-computer{width:84%}.lumos-computer{width:85%;left:4%}}
+.timeline-card .project-cover .hacolio-chat-device{border-radius:14% / 7%}
+
+/* Both Hacolio screens use exactly the same device shell and dimensions. */
+.hacolio-home-phone,.hacolio-chat-phone{height:82%;bottom:6%;opacity:1}.hacolio-home-phone{right:27%;transform:rotate(-8deg)}.hacolio-chat-phone{right:5%;transform:rotate(5deg);z-index:6}.chat-screen-crop{position:absolute;inset:0;overflow:hidden}.timeline-card .project-cover .chat-screen-crop img{position:absolute;max-width:none;width:108%;height:110%;left:-4%;top:-7.5%;object-fit:fill;object-position:center;transform:none;border-radius:0}.hacolio-home-phone .device-screen>img{width:104%;max-width:none;object-position:left top}
+@media(max-width:800px){.hacolio-home-phone,.hacolio-chat-phone{height:55%;bottom:6%}.hacolio-home-phone{right:38%}.hacolio-chat-phone{right:4%}}
+/* Clip the scrollbar captured along the right edge of onboarding. */
+.hacolio-home-phone .device-screen{isolation:isolate}.timeline-card .project-cover .hacolio-home-phone .device-screen>img{position:absolute;left:-1px;top:0;width:calc(100% + 18px);max-width:none;height:100%;object-fit:fill;transform:none}
+/* Keep chat in front; give the supporting onboarding screen more breathing room. */
+.hacolio-home-phone{height:69%;right:28%;bottom:10%;transform:rotate(-8deg)}.hacolio-chat-phone{height:82%;right:6%;bottom:6%}
+@media(max-width:800px){.hacolio-home-phone{height:45%;right:39%;bottom:10%}.hacolio-chat-phone{height:55%;right:5%;bottom:6%}}
+/* Offset the supporting screen upward and left; keep the primary screen clear of the edges. */
+.hacolio-home-phone{height:69%;right:32%;bottom:19%;transform:rotate(-7deg)}.hacolio-chat-phone{height:78%;right:7%;bottom:7%;transform:rotate(4deg)}
+@media(max-width:800px){.hacolio-home-phone{height:45%;right:43%;bottom:22%;transform:rotate(-6deg)}.hacolio-chat-phone{height:53%;right:6%;bottom:8%;transform:rotate(4deg)}}
+
+/* Fine-tune project typography and rebuild Sukima as a landscape-first cover. */
+.beauty-copy strong{font-weight:500;-webkit-text-stroke:.35px currentColor}.beauty-copy{left:39%;top:15%}.beauty-copy strong{font-size:9.4cqw}.beauty-copy strong i{padding-left:2.5cqw}.beauty-copy p{margin-left:2.5cqw}.beauty-phone{right:4%;height:72%}
+.eve-copy p{position:absolute;left:1cqw;top:23cqw;margin:0;font-size:1.1cqw;line-height:1.8;letter-spacing:.12em;white-space:nowrap}.eve-copy{top:9%}.eve-computer{right:5%;bottom:11%;width:min(62%,87cqh)}
+.timeline-card .cover-sukima{background:#121e23}.timeline-card .sukima-landscape img{object-position:65% center;filter:saturate(.7) brightness(.8)}.cover-sukima:before{background:linear-gradient(0deg,#09151ee8,transparent 70%),linear-gradient(90deg,#08111d80,transparent 65%)}.sukima-copy{left:7%;top:auto;bottom:13%;max-width:64%}.sukima-copy .cover-eyebrow{font:clamp(6px,.9cqw,10px) monospace;letter-spacing:.22em;margin-bottom:20px}.sukima-copy strong{font-family:'Noto Sans JP',sans-serif;font-size:5.8cqw;line-height:1.2;letter-spacing:.1em;font-weight:500;white-space:nowrap}.sukima-copy p{font-size:1.1cqw;letter-spacing:.08em;line-height:1.9;margin-top:20px}.sukima-phone{height:76%;right:9%;bottom:11%;transform:rotate(-4deg)}.sukima-route{left:7%;top:8%;bottom:auto;font-size:7px;letter-spacing:.12em;line-height:1.9;opacity:.75}.cover-sukima .cover-open{bottom:15px;right:19px}
+@media(max-width:800px){.beauty-copy{left:29%;top:12%}.beauty-copy strong{font-size:19cqw;-webkit-text-stroke:.25px currentColor}.beauty-copy strong i{padding-left:3cqw}.beauty-copy p{margin-left:3cqw}.beauty-phone{height:55%;right:7%;bottom:8%}.eve-copy p{position:static;margin:16px 0 0 2px;font-size:7px;letter-spacing:.12em}.sukima-copy{top:13%;bottom:auto;left:8%;max-width:84%}.sukima-copy .cover-eyebrow{font-size:5px;margin-bottom:14px}.sukima-copy strong{font-size:11.5cqw;letter-spacing:.04em}.sukima-copy p{font-size:7px;margin-top:12px}.sukima-phone{height:56%;right:13%;bottom:9%;transform:rotate(-4deg)}.sukima-route{top:auto;bottom:9%;left:8%;max-width:22%;font-size:5px}.timeline-card .sukima-landscape img{object-position:65% center}}
+/* Keep each cover's foreground above the shared link defaults. */
+.timeline-card .timeline-image.cover-eve{color:#f2f3f4;background:#080d17}.timeline-card .timeline-image.cover-sukima{color:#f7f7f2;background:#121e23}.timeline-card .timeline-image.cover-lumos{color:#352b21;background:#e4ddd0}.timeline-card .timeline-image.cover-beauty{color:#342c29;background:#ebe7e1}.timeline-card .timeline-image.cover-hacolio{color:#40382f;background:#ded8cc}
+.eve-copy p{top:30cqw}@media(max-width:800px){.eve-copy p{top:auto}}
+
+/* Sukima: devices on the left, a quiet wordmark on the right. */
+.sukima-copy{left:auto;right:6%;top:32%;bottom:auto;width:35%;max-width:none}.sukima-copy strong{font-family:Arial,sans-serif;font-size:8cqw;font-weight:400;line-height:1;letter-spacing:-.065em}.sukima-copy .cover-eyebrow{font-size:.8cqw;letter-spacing:.15em;margin-bottom:20px}.sukima-copy p{font-size:1cqw;margin-top:20px;letter-spacing:.04em}.sukima-computer{width:min(48%,88cqh);left:5%;bottom:24%;transform:rotate(-2deg)}.sukima-phone{height:62%;left:38%;right:auto;bottom:10%;transform:rotate(5deg)}.sukima-route{left:auto;right:6%;top:auto;bottom:11%;width:35%;font-size:6px}.cover-sukima:before{background:linear-gradient(90deg,#08111d66,#08111ddd 66%),linear-gradient(0deg,#08111d77,transparent)}.beauty-phone{transform:rotate(5deg)}
+@media(max-width:800px){.sukima-copy{left:8%;right:auto;top:10%;bottom:auto;width:84%}.sukima-copy strong{font-size:22cqw}.sukima-copy .cover-eyebrow{font-size:5px;margin-bottom:12px}.sukima-copy p{font-size:7px;margin-top:12px}.sukima-computer{width:78%;left:5%;bottom:25%;transform:rotate(-3deg)}.sukima-phone{height:43%;left:51%;bottom:9%;transform:rotate(5deg)}.sukima-route{left:8%;right:auto;bottom:9%;width:32%;font-size:5px}.beauty-phone{transform:rotate(5deg)}}
+/* Reveal the bike on the right without reducing the wordmark's contrast. */
+.cover-sukima:before{background:linear-gradient(90deg,#08111d88 0%,#08111d66 48%,#08111d40 100%),linear-gradient(0deg,#08111d99,transparent 70%)}.timeline-card .sukima-landscape img{object-position:72% center;filter:saturate(.7) brightness(.9)}.sukima-copy strong{text-shadow:0 2px 18px #08111d99}.sukima-copy p,.sukima-copy .cover-eyebrow{text-shadow:0 1px 6px #08111d}
+/* Match the editorial wordmarks while keeping Sukima's own imagery. */
+.sukima-copy strong{font-family:'Bodoni Moda',Didot,'Times New Roman',serif;font-size:9cqw;font-weight:400;letter-spacing:-.055em;line-height:1;text-shadow:none}
+@media(max-width:800px){.sukima-copy strong{font-size:23cqw;letter-spacing:-.055em}}
+
+/* Use Miyu's own top-page photo collage and balance the right with both screen sizes. */
+.beauty-photo-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:3px;right:65%}.timeline-card .beauty-photo-grid img{width:100%;height:100%;min-width:0;min-height:0;object-fit:cover;object-position:center;filter:saturate(.8)}.beauty-photo-grid img:nth-child(1){object-position:50% 45%}.beauty-photo-grid img:nth-child(2){object-position:60% center}.beauty-copy{left:39%;top:11%}.beauty-copy strong{font-size:8.7cqw}.beauty-copy .cover-eyebrow{margin-bottom:14px}.beauty-copy p{margin-top:14px}.beauty-computer{width:min(45%,64cqh);right:10%;bottom:13%;transform:rotate(-3deg)}.beauty-phone{height:64%;right:3%;bottom:7%;transform:rotate(5deg)}.beauty-edition{left:39%;bottom:7%;font-size:6px}
+@media(max-width:800px){.beauty-photo-grid{right:51%}.beauty-copy{left:29%;top:9%}.beauty-copy strong{font-size:18cqw}.beauty-copy p{font-size:6px}.beauty-computer{width:72%;right:17%;bottom:24%;transform:rotate(-4deg)}.beauty-phone{height:44%;right:5%;bottom:7%;transform:rotate(5deg)}.beauty-edition{left:6%;bottom:7%;max-width:24%;font-size:5px}}
+
+/* Approved Hacolio banner artwork. */
+.timeline-card .timeline-image.cover-hacolio-banner{padding:0;background:#f5f1e8}
+.timeline-card .timeline-image.cover-hacolio-banner .hacolio-banner-image{position:absolute;inset:0;display:block;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center;transform:none;filter:none;border:0;border-radius:0}
+
+/* Sukima: a clean, grounded wordmark for the urban riding imagery. */
+.sukima-copy strong{font-family:Arial,'Noto Sans JP',sans-serif;font-size:8.2cqw;font-weight:500;letter-spacing:-.045em;line-height:1.05}
+@media(max-width:800px){.sukima-copy strong{font-size:21cqw}}
+
+/* A quieter, lighter Sukima wordmark with more air between letters. */
+.sukima-copy strong{font-family:'Segoe UI Light','Helvetica Neue','Segoe UI',sans-serif;font-size:7.6cqw;font-weight:300;letter-spacing:.035em;line-height:1.1}
+@media(max-width:800px){.sukima-copy strong{font-size:19cqw}}
+
+/* Sukima: understated polish, with a little warmth and everyday weight. */
+.sukima-copy strong{font-family:'Trebuchet MS','Segoe UI',sans-serif;font-size:8cqw;font-weight:400;letter-spacing:-.035em;line-height:1.05}
+@media(max-width:800px){.sukima-copy strong{font-size:20cqw}}
+
+/* A grounded serif: less delicate than the original fashion-style title. */
+.sukima-copy strong{font-family:Georgia,'Times New Roman',serif;font-size:8.2cqw;font-weight:400;letter-spacing:-.045em;line-height:1.05}
+@media(max-width:800px){.sukima-copy strong{font-size:21cqw}}
+
+/* Subtly lighten Georgia while retaining its letterforms. */
+.sukima-copy strong{-webkit-text-stroke:.35px #17212e;paint-order:fill stroke}
+
+/* Editable Hacolio composition, built from individual screens and live typography. */
+.timeline-card .timeline-image.hacolio-live-cover{background:#f3efe6;color:#393126}
+.hacolio-backdrop{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.hacolio-edition{position:absolute;right:4%;top:5%;font:clamp(6px,.8cqw,11px) Arial,sans-serif;letter-spacing:.22em;color:#686157}
+.hacolio-live-cover .hacolio-copy{left:6%;top:28%;width:44%}
+.hacolio-live-cover .hacolio-copy strong{font-family:'Arial Rounded MT Bold','Trebuchet MS',sans-serif;font-size:9.6cqw;font-weight:600;letter-spacing:-.065em;line-height:1.05}
+.hacolio-live-cover .hacolio-copy .cover-eyebrow{font-family:Arial,sans-serif;font-size:1.05cqw;letter-spacing:.16em;margin-bottom:22px}
+.hacolio-live-cover .hacolio-copy p{font-family:'Noto Sans JP',sans-serif;font-size:1.65cqw;letter-spacing:.03em;margin-top:20px;white-space:nowrap}
+.hacolio-live-cover .hacolio-label{font-size:1cqw;margin-top:25px}
+.hacolio-live-cover .hacolio-home-phone{height:77%;right:32%;bottom:16%;transform:rotate(-7deg);opacity:1}
+.hacolio-live-cover .hacolio-chat-phone{height:82%;right:7%;bottom:7%;transform:rotate(5deg)}
+@media(max-width:800px){
+ .hacolio-live-cover .hacolio-copy{top:9%;left:8%;width:84%}
+ .hacolio-live-cover .hacolio-copy strong{font-size:20cqw}
+ .hacolio-live-cover .hacolio-copy .cover-eyebrow{font-size:6px;margin-bottom:10px}
+ .hacolio-live-cover .hacolio-copy p{font-size:3.2cqw;margin-top:12px}
+ .hacolio-live-cover .hacolio-label{font-size:2.4cqw;margin-top:12px}
+ .hacolio-live-cover .hacolio-home-phone{height:49%;right:46%;bottom:10%}
+ .hacolio-live-cover .hacolio-chat-phone{height:53%;right:9%;bottom:5%}
+ .hacolio-edition{display:none}
+}
+
+/* Bring the Lumos devices together into one composition. */
+@media(min-width:801px){.lumos-phone{right:17%}}
+
+/* Eve Player: an album-sleeve composition, independent of the artist-site cover. */
+.timeline-card .timeline-image.cover-eve-player{background:#271a20;color:#f3e9dd}
+.player-cover-atmosphere{position:absolute;inset:0;background:radial-gradient(ellipse at 80% 60%,#9b59483b,transparent 65%),linear-gradient(125deg,#462a30,#1a171d);z-index:-2}
+.player-cover-record{position:absolute;width:48%;aspect-ratio:1;right:-14%;top:-23%;border-radius:50%;background:repeating-radial-gradient(circle,#141318 0 2px,#242027 3px 4px);box-shadow:0 12px 40px #0004;opacity:.8}
+.player-cover-record span{position:absolute;inset:36%;border-radius:50%;background:#bfa290;color:#38252b;display:grid;place-content:center;text-align:center;font:1cqw monospace;letter-spacing:.1em}
+.player-cover-copy{left:7%;top:14%;width:43%}
+.player-cover-copy strong{font-family:Georgia,serif;font-size:9.3cqw;line-height:.92;letter-spacing:-.055em}
+.player-cover-copy strong i{font-style:italic;font-weight:400}
+.player-cover-copy .cover-eyebrow{font-family:Arial,sans-serif;letter-spacing:.17em;font-size:.75cqw;margin-bottom:24px;color:#cdb7aa}
+.player-cover-copy p{font-size:1.05cqw;color:#d9c7bc;margin-top:24px}
+.player-cover-computer{width:min(64%,88cqh);right:5%;bottom:14%;transform:rotate(-4deg)}
+.player-cover-computer .device-screen{aspect-ratio:1.6}
+.player-cover-edition{position:absolute;bottom:7%;left:7%;font:.6cqw monospace;line-height:1.8;letter-spacing:.1em;color:#bda99e}
+@media(max-width:800px){.player-cover-copy{top:10%;left:8%;width:84%}.player-cover-copy strong{font-size:17.5cqw}.player-cover-copy strong br{display:none}.player-cover-copy strong i{margin-left:.12em}.player-cover-copy .cover-eyebrow{font-size:5px;margin-bottom:16px}.player-cover-copy p{font-size:7px;margin-top:14px}.player-cover-computer{width:85%;right:7%;bottom:21%;transform:rotate(-5deg)}.player-cover-record{width:88%;right:-35%;top:22%}.player-cover-edition{font-size:5px;bottom:8%;left:8%}}
+
+/* Show both actual desktop and responsive mobile player screens. */
+.player-cover-computer{width:min(59%,82cqh);right:14%;bottom:17%}
+.player-cover-phone{height:65%;right:4%;bottom:8%;transform:rotate(7deg);z-index:6}
+@media(max-width:800px){
+ .player-cover-computer{width:79%;right:15%;bottom:28%;transform:rotate(-5deg)}
+ .player-cover-phone{height:39%;right:7%;bottom:10%;transform:rotate(6deg)}
+}
+
+/* Eve Player: live-photo backdrop and a bold music-poster hierarchy. */
+.timeline-card .timeline-image.cover-eve-player{background:#102923;color:#eef5e8}
+.player-cover-atmosphere{position:absolute;inset:0;background:#102923;z-index:-2}
+.timeline-card .player-cover-atmosphere img{width:100%;height:100%;object-fit:cover;object-position:65% center;filter:brightness(.78)}
+.cover-eve-player:before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#071b19b8,transparent 76%),linear-gradient(0deg,#061512bb,transparent 55%)}
+.player-cover-record{display:none}
+.player-cover-copy{left:6%;top:10%;width:65%}
+.player-cover-copy .cover-eyebrow{font-size:.8cqw;color:#d1e3d4;margin-bottom:18px;letter-spacing:.22em}
+.player-cover-copy strong{font-family:Arial,'Noto Sans JP',sans-serif;font-size:9cqw;font-weight:700;line-height:.9;letter-spacing:-.065em;text-transform:uppercase}
+.player-cover-copy strong i{font-family:inherit;font-style:normal;font-weight:700;font-size:11cqw;color:transparent;-webkit-text-stroke:1px #e3efde;letter-spacing:-.04em}
+.player-cover-copy p{font-size:1cqw;color:#e0e9dd;margin-top:20px;letter-spacing:.04em}
+.player-cover-computer{width:min(58%,82cqh);right:17%;bottom:12%;transform:rotate(-4deg)}
+.player-cover-phone{height:59%;right:4%;bottom:8%;transform:rotate(7deg);border-color:#8eaaa0;background:#101b18;box-shadow:inset 0 0 0 2px #080e0c,9px 22px 35px #0005}
+.player-cover-edition{bottom:5%;left:6%;font-size:.6cqw;color:#c1d6c7}
+@media(max-width:800px){
+ .timeline-card .player-cover-atmosphere img{object-position:67% center}
+ .player-cover-copy{left:8%;top:9%;width:84%}
+ .player-cover-copy .cover-eyebrow{font-size:5px;margin-bottom:16px}
+ .player-cover-copy strong{font-size:21cqw;line-height:.9}
+ .player-cover-copy strong br{display:block}
+ .player-cover-copy strong i{font-size:24cqw;margin-left:0;-webkit-text-stroke:.75px #e3efde}
+ .player-cover-copy p{font-size:7px;margin-top:16px}
+ .player-cover-computer{width:80%;right:13%;bottom:25%;transform:rotate(-5deg)}
+ .player-cover-phone{height:38%;right:6%;bottom:8%;transform:rotate(6deg)}
+ .player-cover-edition{font-size:5px;bottom:6%;left:8%;max-width:43%}
+}
+
+/* Place the performer behind the left-hand title without mirroring the photo. */
+.player-cover-atmosphere{overflow:hidden}
+.timeline-card .player-cover-atmosphere img{position:absolute;left:-29%;top:0;width:100%;height:100%;object-position:65% center;mask-image:linear-gradient(90deg,#000 0%,#000 78%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,#000 0%,#000 78%,transparent 100%)}
+@media(max-width:800px){.timeline-card .player-cover-atmosphere img{left:-16%;width:116%;object-position:67% center}}
+
+/* Blend the artist photograph into the dark canvas instead of a hard edge. */
+.eve-portrait{mask-image:linear-gradient(90deg,#000 0%,#000 65%,transparent 100%);-webkit-mask-image:linear-gradient(90deg,#000 0%,#000 65%,transparent 100%)}
+
+/* Crop the baked-in browser scrollbar from the Eve desktop screenshot. */
+.timeline-card .eve-computer .device-screen img{width:calc(100% + 1.3%);max-width:none;object-fit:cover;object-position:left top}
+
+/* Hide the captured scrollbar at the edge of Beauty's desktop screen. */
+.timeline-card .beauty-computer .device-screen img{width:calc(100% + 1.3%);max-width:none;object-fit:cover;object-position:left top}
+
+/* Beauty mobile capture includes a wider scrollbar than its desktop capture. */
+.timeline-card .beauty-phone .device-screen img{width:calc(100% + 4.5%);max-width:none;object-fit:cover;object-position:left top}
+
+/* Clean capture fills the phone screen without oversizing or side gutters. */
+.timeline-card .beauty-phone .device-screen img{width:100%;height:100%;max-width:none;object-fit:cover;object-position:center top}
+
+/* Preserve the artist's preferred capitalization in the banner. */
+.player-cover-copy strong{text-transform:none}
+.player-cover-copy strong i{text-transform:uppercase}

@@ -9,6 +9,17 @@ body {
   background: #f8f8f8;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   overflow-x: hidden;
+  perspective: 2200px;
+}
+
+/* ── Stage：画像パネル＋本 全体をぺらっと裏返して配置を入れ替える ── */
+
+#stage {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
 }
 
 /* ── Visual Panel (right side image display) ── */
@@ -143,6 +154,14 @@ body {
   pointer-events: auto;
 }
 
+/* 説明を見る：前面情報を隠して説明パネルに切り替える */
+.page-content.showing-desc .project-type,
+.page-content.showing-desc .mobile-thumb,
+.page-content.showing-desc .project-tags,
+.page-content.showing-desc .desc-toggle {
+  display: none;
+}
+
 /* ── Typography ─────────────────────────────── */
 
 .label {
@@ -249,9 +268,16 @@ p {
   color: #7777aa;
   border-color: rgba(255, 255, 255, 0.1);
 }
-.page[data-page="1"] .page-content > a[href^="https"] {
+.page[data-page="1"] .view-site-link {
   color: #e8e4ff;
   border-color: rgba(232, 228, 255, 0.5);
+}
+.page[data-page="1"] .desc-toggle {
+  color: #e8e4ff;
+  border-color: rgba(232, 228, 255, 0.5);
+}
+.page[data-page="1"] .desc-toggle[aria-expanded="true"] {
+  background: rgba(232, 228, 255, 0.08);
 }
 
 /* ── Lumos & Musk page — warm seasonal (page 2) */
@@ -303,14 +329,70 @@ p {
   color: #6a9ab8;
   border-color: rgba(100, 160, 210, 0.2);
 }
-.page[data-page="4"] .page-content > a[href^="https"] {
+.page[data-page="4"] .view-site-link {
   color: #e8edf2;
   border-color: rgba(232, 237, 242, 0.5);
 }
+.page[data-page="4"] .desc-toggle {
+  color: #e8edf2;
+  border-color: rgba(232, 237, 242, 0.5);
+}
+.page[data-page="4"] .desc-toggle[aria-expanded="true"] {
+  background: rgba(232, 237, 242, 0.08);
+}
+
+/* ── Description toggle ─────────────────────── */
+
+.desc-toggle {
+  display: inline-block;
+  width: fit-content;
+  margin-top: 1.4rem;
+  padding: 0.5rem 1rem;
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: currentColor;
+  background: none;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  opacity: 0.75;
+  cursor: pointer;
+  transition: opacity 0.2s ease, background 0.2s ease;
+}
+.desc-toggle:hover { opacity: 1; }
+
+.desc-back {
+  display: inline-block;
+  width: fit-content;
+  margin-bottom: 1.4rem;
+  padding: 0;
+  font-family: inherit;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: currentColor;
+  background: none;
+  border: none;
+  opacity: 0.55;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.desc-back:hover { opacity: 0.9; }
+
+.project-description {
+  display: none;
+  flex-direction: column;
+  max-height: 68vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+.project-description.open { display: flex; }
 
 /* ── Contact ────────────────────────────────── */
 
-.page-content > a[href^="https"] {
+.view-site-link {
   display: inline-block;
   width: fit-content;
   margin-top: 1.2rem;
@@ -325,7 +407,7 @@ p {
   opacity: 0.75;
   transition: opacity 0.2s ease;
 }
-.page-content > a[href^="https"]:hover { opacity: 1; }
+.view-site-link:hover { opacity: 1; }
 
 .email-link {
   display: inline-block;
@@ -486,6 +568,7 @@ p {
   }
 
   .book {
+    left: 0;
     width: 100%;
   }
 

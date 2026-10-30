@@ -1,2 +1,15 @@
 .claude
 node_modules
+
+# Local recordings, tools, and visual checks
+/tmp/
+
+# Local source materials and private working notes
+/materials/
+/docs/
+/archive/
+/dist/
+/eve-jpop.jpeg
+.env
+.env.*
+!.env.example

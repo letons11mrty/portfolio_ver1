@@ -7,42 +7,42 @@ const b = import.meta.env.BASE_URL;
 const sections = [
   {
     // 0 — About
-    bg: '#f8f8f8',
+    bg: '#e2e6d7',
     main:   b + 'profile/profile.jpg',
     float1: b + 'work02-lumos/ss-index.jpg',
     float2: b + 'work02-lumos/ss-shop.jpg',
   },
   {
     // 1 — Eve
-    bg: '#1a1a2e',
+    bg: '#e4dfed',
     main:   b + 'work01-eve/05_PROFILE.png',
     float1: b + 'work01-eve/04_DISCOGRAPHY.png',
     float2: b + 'work01-eve/01_TOP.png',
   },
   {
     // 2 — Lumos & Musk
-    bg: '#f5f0ea',
+    bg: '#e9dfcb',
     main:   b + 'work02-lumos/ss-index.jpg',
     float1: b + 'work02-lumos/ss-shop.jpg',
     float2: b + 'work02-lumos/ss-discovery.jpg',
   },
   {
     // 3 — Beauty Portfolio
-    bg: '#f8f2f5',
+    bg: '#e9dedd',
     main:   b + 'work04-beauty/Image (10).jpg',
     float1: b + 'work04-beauty/Image (9).jpg',
     float2: b + 'work04-beauty/Image (11).jpg',
   },
   {
     // 4 — すきまけしき
-    bg: '#0f1014',
+    bg: '#dbe4df',
     main:   b + 'work03-sukima/ss-login.jpg',
     float1: b + 'work03-sukima/ss-home.jpg',
     float2: b + 'work03-sukima/ss-main.jpg',
   },
   {
     // 5 — Contact
-    bg: '#fff0f8',
+    bg: '#e2e6d7',
     main:   b + 'work04-beauty/Image (11).jpg',
     float1: b + 'work01-eve/05_PROFILE.png',
     float2: b + 'work02-lumos/ss-reservation.jpg',
@@ -119,6 +119,7 @@ function applyPanel(index, flipDuration = FLIP_DURATION) {
 
     gsap.set(front, { opacity: 1, zIndex: 1 });
     gsap.set(back,  { opacity: 0, zIndex: 2 });
+    back.onload = null;
     back.src = src;
 
     // midpoint 後にクロスフェード（画像未読込なら onload を待つ）
@@ -140,6 +141,7 @@ function applyPanel(index, flipDuration = FLIP_DURATION) {
 // ── Section switch ────────────────────────────────────────────────────────────
 
 let pendingSection = -1;
+let sectionTimer = null;
 
 function goToSection(index) {
   if (index === currentSection) return;
@@ -147,6 +149,7 @@ function goToSection(index) {
     pendingSection = index;
     return;
   }
+  closeAllDescriptions();
   isAnimating = true;
   pendingSection = -1;
 
@@ -176,7 +179,8 @@ function goToSection(index) {
   currentSection = to;
 
   const totalMs = (FLIP_DURATION + (pageRange.length - 1) * 0.1) * 1000;
-  setTimeout(() => {
+  sectionTimer = setTimeout(() => {
+    sectionTimer = null;
     isAnimating = false;
     if (pendingSection !== -1 && pendingSection !== currentSection) {
       goToSection(pendingSection);
@@ -189,6 +193,10 @@ function goToSection(index) {
 function jumpToSection(index) {
   if (index === currentSection) return;
 
+  closeAllDescriptions();
+  clearTimeout(sectionTimer);
+  sectionTimer = null;
+  pendingSection = -1;
   document.querySelectorAll('.page').forEach(el => gsap.killTweensOf(el));
   isAnimating = false;
 
@@ -205,19 +213,25 @@ function jumpToSection(index) {
   scrollIndicator.classList.toggle('hidden', index === TOTAL - 1);
   currentSection = index;
 
-  const maxScroll = document.body.scrollHeight - window.innerHeight;
-  const targetY   = ((index + 0.5) / TOTAL) * maxScroll;
-  window.removeEventListener('scroll', onScroll);
-  window.scrollTo({ top: targetY, behavior: 'instant' });
-  requestAnimationFrame(() => window.addEventListener('scroll', onScroll, { passive: true }));
+
 }
 
 // ── Wheel ────────────────────────────────────────────────────────────────────
 
 let wheelCooldown = false;
 
-if (window.innerWidth > 768) {
-  document.addEventListener('wheel', e => {
+document.addEventListener('wheel', e => {
+    if (window.innerWidth <= 768 || e.deltaY === 0) return;
+    const scrollBox = e.target.closest('.project-description');
+    if (scrollBox && scrollBox.scrollHeight > scrollBox.clientHeight) {
+      const atTop    = scrollBox.scrollTop <= 0;
+      const atBottom = scrollBox.scrollTop + scrollBox.clientHeight >= scrollBox.scrollHeight - 1;
+      const scrollingDown = e.deltaY > 0;
+      if ((scrollingDown && !atBottom) || (!scrollingDown && !atTop)) {
+        return; // let the description area scroll natively, don't flip pages
+      }
+    }
+
     e.preventDefault();
     if (wheelCooldown || isAnimating) return;
     const dir = e.deltaY > 0 ? 1 : -1;
@@ -226,7 +240,6 @@ if (window.innerWidth > 768) {
     wheelCooldown = true;
     setTimeout(() => { wheelCooldown = false; }, 900);
   }, { passive: false });
-}
 
 // ── Touch swipe (mobile) ──────────────────────────────────────────────────────
 
@@ -258,6 +271,43 @@ window.addEventListener('touchend', (e) => {
 
 navDots.forEach(dot => {
   dot.addEventListener('click', () => jumpToSection(Number(dot.dataset.target)));
+});
+
+// ── Description: reveal within the current page ──
+
+
+function applyDescState(pageContent, desc, openBtn, open) {
+  pageContent.classList.toggle('showing-desc', open);
+  desc.classList.toggle('open', open);
+
+  if (openBtn) openBtn.setAttribute('aria-expanded', String(open));
+}
+
+function closeAllDescriptions() {
+  gsap.killTweensOf('.project-description');
+  document.querySelectorAll('.page-content.showing-desc').forEach(pageContent => {
+    const desc    = pageContent.querySelector('.project-description');
+    const openBtn = pageContent.querySelector('.desc-toggle');
+    applyDescState(pageContent, desc, openBtn, false);
+  });
+}
+
+document.querySelectorAll('.page-content').forEach(pageContent => {
+  const openBtn = pageContent.querySelector('.desc-toggle');
+  const desc    = pageContent.querySelector('.project-description');
+  const backBtn = pageContent.querySelector('.desc-back');
+  if (!openBtn || !desc) return;
+
+  function flip(open) {
+    gsap.killTweensOf(desc);
+    applyDescState(pageContent, desc, openBtn, open);
+    if (open && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      gsap.fromTo(desc, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' });
+    }
+  }
+
+  openBtn.addEventListener('click', () => flip(true));
+  if (backBtn) backBtn.addEventListener('click', () => flip(false));
 });
 
 // ── Init first section panel ──────────────────────────────────────────────────
