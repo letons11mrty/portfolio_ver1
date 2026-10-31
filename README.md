@@ -33,6 +33,7 @@
 - 全体の見た目：src/studio.css
 - 作品一覧のレイアウト：src/timeline.css
 - 各作品バナー：src/project-covers.css
+- スマホ・タブレットのレイアウト：src/responsive.css
 - 画面切り替え：src/timeline.js
 - 動画の再生制御：src/demo-video.js
 
@@ -55,3 +56,7 @@ archive/a-book-preserved/ にA案を保存しています。
 公開パス： /portfolio_ver1/
 materials/・docs/・archive/ はローカル保管用のためGit管理から除外しています。
 dist/ は npm run build で再生成します。
+
+## レスポンシブの動作
+
+スマホでは年表を上部にまとめ、作品バナーを全幅で表示します。小型端末（幅800px以下・高さ700px以下）や横向きの低い画面（幅1023px以下・高さ560px以下）では、固定スライドを縦並びの作品一覧に切り替えます。幅1023px以下ではプロフィール・About間の自動画面切り替えを使わず、通常のスクロールで読めます。
