@@ -95,18 +95,6 @@
   .project-detail .project-story p { font-size: 14px; line-height: 2; }
 }
 
-/* On short landscape screens a pinned gallery leaves no room to read a card. */
-@media (max-width: 800px) and (max-height: 700px), (max-width: 1023px) and (max-height: 560px) {
-  .timeline-track { height: auto; }
-  .timeline-sticky { position: relative; top: 0; height: auto; padding: 16px 0; }
-  .timeline-layout { display: block; height: auto; }
-  .timeline-rail, .timeline-controls { display: none; }
-  .timeline-deck { display: grid; gap: 32px; height: auto; max-width: none; }
-  .timeline-card { position: relative; inset: auto; transform: none !important; opacity: 1 !important; visibility: visible !important; pointer-events: auto !important; min-height: 0; }
-  .timeline-image { flex: none; height: auto; aspect-ratio: 4 / 3; }
-  .timeline-sticky > .section-heading { margin-bottom: 24px; }
-}
-
 @media(max-width:800px){
  .player-cover-copy strong{font-size:min(20cqw,11cqh)}
  .player-cover-copy strong i{font-size:min(23cqw,13cqh)}
@@ -114,6 +102,69 @@
  .player-cover-copy p{font-size:clamp(8px,2cqw,12px);line-height:1.8;margin-top:16px}
 }
 
-@media(max-width:800px) and (max-height:700px){.timeline-image{aspect-ratio:3/4}.timeline-sticky .section-heading{position:relative}.timeline-deck{max-width:480px;margin-inline:auto}}
 
 @media(max-width:800px){.hacolio-live-cover .hacolio-label{display:none}}
+/* Preserve the animated gallery even when the viewport is short. */
+@media(max-width:1023px) and (max-height:560px){
+ .timeline-sticky{top:8px;height:calc(100svh - 8px);padding:8px 0;min-height:0}
+ .timeline-sticky > .section-heading{margin-bottom:8px;padding-right:50px}
+ .timeline-sticky > .section-heading h2{font-size:25px}
+ .timeline-sticky > .section-heading .eyebrow,.timeline-sticky > .section-heading > p{display:none}
+ .timeline-layout{grid-template-columns:minmax(0,1fr);grid-template-rows:28px minmax(0,1fr);gap:8px}
+ .timeline-rail{position:relative;display:flex;flex-direction:row;align-items:center;justify-content:space-between;border-left:0;border-top:1px solid var(--line);margin:0;padding:4px 0 0}
+ .rail-year{position:static;padding:0;font-size:22px;gap:8px}
+ .rail-dot{position:static;transform:none;width:6px;height:6px;box-shadow:none}
+ .rail-kicker,.rail-bottom > span:last-child{display:none}
+ .rail-bottom{padding:0}
+ .timeline-deck{min-height:0;max-width:none}
+ .timeline-caption{padding-top:6px}
+ .timeline-caption .work-meta,.timeline-caption p{display:none}
+ .timeline-caption h3{font-size:22px;margin:4px 0}
+ .timeline-caption h3 a{min-height:32px}
+ .timeline-sticky .timeline-controls{display:block;padding-top:4px}
+ .timeline-hint{display:none}
+ .timeline-controls nav{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));width:100%;gap:4px}
+ .timeline-controls button{min-width:0;min-height:40px;padding:8px 0;font-size:10px}
+}
+
+@media(max-width:800px){
+ @container (max-height:380px){
+  .eve-copy{top:12%}
+  .eve-copy strong{font-size:28cqw}
+  .eve-copy p{top:auto;font-size:8px;margin-top:12px}
+  .eve-computer{width:64%;right:4%;bottom:12%}
+  .cover-note{display:none}
+  .lumos-copy{top:8%}
+  .lumos-copy strong{font-size:8cqw;line-height:1.1}
+  .lumos-copy i{display:inline}
+  .lumos-copy .cover-eyebrow{margin-bottom:6px}
+  .lumos-copy p{display:none}
+  .lumos-computer{width:65%;left:5%;bottom:12%}
+  .lumos-phone{height:65%;right:6%;bottom:8%}
+  .beauty-copy{left:8%;top:10%}
+  .beauty-copy strong{font-size:10cqw}
+  .beauty-copy p,.beauty-edition{display:none}
+  .beauty-copy .cover-eyebrow{margin-bottom:8px}
+  .beauty-computer{width:62%;right:20%;bottom:12%}
+  .beauty-phone{height:68%;right:4%;bottom:7%}
+  .sukima-copy{top:10%;left:6%;width:70%}
+  .sukima-copy strong{font-size:13cqw}
+  .sukima-copy .cover-eyebrow{margin-bottom:8px}
+  .sukima-copy p,.sukima-route{display:none}
+  .sukima-computer{width:64%;left:4%;bottom:10%}
+  .sukima-phone{height:67%;left:auto;right:4%;bottom:7%}
+  .player-cover-copy{top:10%}
+  .player-cover-copy strong{font-size:10cqw}
+  .player-cover-copy strong i{font-size:11cqw}
+  .player-cover-copy .cover-eyebrow{font-size:6px;margin-bottom:8px}
+  .player-cover-copy p,.player-cover-edition{display:none}
+  .player-cover-computer{width:65%;right:20%;bottom:10%}
+  .player-cover-phone{height:66%;right:4%;bottom:7%}
+  .hacolio-live-cover .hacolio-copy{top:16%;left:6%;width:46%}
+  .hacolio-live-cover .hacolio-copy strong{font-size:11cqw}
+  .hacolio-live-cover .hacolio-copy .cover-eyebrow{font-size:6px;margin-bottom:12px}
+  .hacolio-live-cover .hacolio-copy p{font-size:8px;white-space:normal;max-width:90%;line-height:1.8}
+  .hacolio-live-cover .hacolio-home-phone{height:57%;right:15%;bottom:14%}
+  .hacolio-live-cover .hacolio-chat-phone{height:60%;right:1%;bottom:7%}
+ }
+}

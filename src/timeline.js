@@ -10,8 +10,6 @@ const dates = cards.map(card => card.dataset.date);
 const railYear = track.querySelector('.rail-year');
 let labelMotion = null;
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-const compactLayout = matchMedia('(max-width: 1023px)');
-const shortScreen = matchMedia('(max-width: 800px) and (max-height: 700px), (max-width: 1023px) and (max-height: 560px)');
 let active = 0, flip = null, scrollTween = null, frame = 0;
 let lastWheel = 0, used = false, amount = 0, touch = null;
 document.documentElement.classList.add('timeline-ready');
@@ -41,10 +39,10 @@ function labels(animate = false, direction = 1) {
 }
 
 function access() {
-  cards.forEach((card,i) => {const shown=shortScreen.matches || i===active;card.inert=!shown;card.setAttribute('aria-hidden',String(!shown));card.style.pointerEvents=shown?'auto':'none';});
+  cards.forEach((card,i) => {const shown=i===active;card.inert=!shown;card.setAttribute('aria-hidden',String(!shown));card.style.pointerEvents=shown?'auto':'none';});
   buttons.forEach((button,i) => {if(i === active)button.setAttribute('aria-current','true');else button.removeAttribute('aria-current');});
 }
-function settle() { cards.forEach((card,i) => gsap.set(card,{rotationY:0,yPercent:0,opacity:1,zIndex:i===active ? 2 : 0,visibility:shortScreen.matches || i===active ? 'visible' : 'hidden'})); }
+function settle() { cards.forEach((card,i) => gsap.set(card,{rotationY:0,yPercent:0,opacity:1,zIndex:i===active ? 2 : 0,visibility:i===active ? 'visible' : 'hidden'})); }
 function move(top, done) {
   if(scrollTween)scrollTween.kill();
   const state = {y:scrollY};
@@ -118,13 +116,12 @@ function turn(index, align = false, instant = false) {
     .to(incoming,{yPercent:0,duration:1.05,ease:'power3.inOut'},0);
   labels(true,direction);
 }
-function sync(){frame=0;if(shortScreen.matches){settle();access();return;}if(flip || scrollTween)return;const m=metrics();turn(positionIndex(),false,scrollY<m.start-20 || scrollY>m.end+20);}
+function sync(){frame=0;if(flip || scrollTween)return;const m=metrics();turn(positionIndex(),false,scrollY<m.start-20 || scrollY>m.end+20);}
 function schedule(){if(!frame)frame=requestAnimationFrame(sync);}
 function inside(){const m=metrics();return scrollY>=m.start-3 && scrollY<=m.end+3;}
-function capture(dir){return !shortScreen.matches && inside() && !(dir<0 && active===0) && !(dir>0 && active===lastIndex);}
+function capture(dir){return inside() && !(dir<0 && active===0) && !(dir>0 && active===lastIndex);}
 // One gesture moves between the opening profile and the first work screen.
 function introDestination(dir) {
-  if(compactLayout.matches)return null;
   const m = metrics();
   const hero = document.querySelector('.hero');
   if (!hero || document.querySelector('.topbar.menu-open')) return null;
@@ -139,7 +136,6 @@ function introDestination(dir) {
 
 // Connect the final work and About with the same overlapping screen transition.
 function aboutDestination(dir) {
-  if(compactLayout.matches)return null;
   const about = document.getElementById('about');
   if (!about || document.querySelector('.topbar.menu-open')) return null;
   const m = metrics();
@@ -152,7 +148,7 @@ function aboutDestination(dir) {
   return null;
 }
 window.addEventListener('wheel',e=>{
-  if(shortScreen.matches || document.querySelector('.topbar.menu-open'))return;
+  if(document.querySelector('.topbar.menu-open'))return;
   if(e.ctrlKey || Math.abs(e.deltaX)>Math.abs(e.deltaY) || !e.deltaY)return;
   const delta=e.deltaY*(e.deltaMode===1 ? 16 : e.deltaMode===2 ? innerHeight : 1);
   const now=performance.now(), fresh=now-lastWheel>210;lastWheel=now;
@@ -178,7 +174,7 @@ window.addEventListener('wheel',e=>{
 },{passive:false});
 window.addEventListener('touchstart',e=>{touch=e.touches.length===1 ? {x:e.touches[0].clientX,y:e.touches[0].clientY,used:false}:null;},{passive:true});
 window.addEventListener('touchmove',e=>{
-  if(shortScreen.matches || document.querySelector('.topbar.menu-open') || !touch || e.touches.length!==1)return;
+  if(document.querySelector('.topbar.menu-open') || !touch || e.touches.length!==1)return;
   const dy=touch.y-e.touches[0].clientY,dx=touch.x-e.touches[0].clientX;
   if(Math.abs(dy)<Math.abs(dx) || Math.abs(dy)<6)return;
   if(touch.used || flip || scrollTween){e.preventDefault();return;}
@@ -190,7 +186,6 @@ window.addEventListener('touchmove',e=>{
 },{passive:false});
 for(const event of ['touchend','touchcancel'])window.addEventListener(event,()=>{touch=null;},{passive:true});
 window.addEventListener('keydown',e=>{
-  if(shortScreen.matches)return;
   if(e.target.closest('input,textarea,select,button,a,[contenteditable="true"]') || e.ctrlKey || e.metaKey || e.altKey)return;
   const dir=['ArrowDown','PageDown',' '].includes(e.key) ? 1 : ['ArrowUp','PageUp'].includes(e.key) ? -1 : 0;
   if(!dir)return;
@@ -206,14 +201,12 @@ document.querySelectorAll('a[href^="#"]').forEach(link=>link.addEventListener('c
   if(e.ctrlKey || e.metaKey || e.shiftKey || e.altKey)return;
   const hash=link.getAttribute('href'),target=hash==='#' ? document.documentElement : document.getElementById(hash.slice(1));
   if(!target)return;e.preventDefault();
-  if(shortScreen.matches && link.matches('[data-work]'))return;
   if(flip){flip.kill();flip=null;settle();labels();}
   const top=hash==='#' ? 0 : target.getBoundingClientRect().top+scrollY-document.querySelector('.topbar').offsetHeight-24;
   move(top,sync);history.pushState(null,'',hash);
 }));
 window.addEventListener('scroll',schedule,{passive:true});
 window.addEventListener('resize',()=>{if(scrollTween){scrollTween.kill();scrollTween=null;}schedule();});
-shortScreen.addEventListener('change',()=>{if(flip){flip.kill();flip=null;}if(scrollTween){scrollTween.kill();scrollTween=null;}settle();access();labels();schedule();});
 window.addEventListener('pageshow',schedule);
 reduced.addEventListener('change',()=>{if(flip){flip.kill();flip=null;}settle();labels();});
 active=positionIndex();settle();access();labels();
