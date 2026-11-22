@@ -1,19 +1,14 @@
 {
-  "name": "portfolio-3d",
+  "name": "portfolio-wabi",
   "version": "1.0.0",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
-  "dependencies": {
-    "gsap": "^3.12.5",
-    "playwright": "^1.60.0",
-    "three": "^0.170.0"
-  },
   "devDependencies": {
-    "puppeteer-core": "^25.1.0",
-    "vite": "^6.0.0"
+    "vite": "^8.3.8"
   }
 }

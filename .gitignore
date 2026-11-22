@@ -1,14 +1,12 @@
-.claude
-node_modules
-
-# Local recordings, tools, and visual checks
-/tmp/
-
-# Local source materials and private working notes
-/materials/
-/docs/
-/archive/
-/dist/
+node_modules/
+dist/
+.npm-cache/
+.qa/
+.claude/
+tmp/
+materials/
+docs/
+archive/
 /eve-jpop.jpeg
 .env
 .env.*

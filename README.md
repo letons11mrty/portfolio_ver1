@@ -1,62 +1,43 @@
-# Kiyoto Ishii — Portfolio
+# 石井 青泊 — わびさびポートフォリオ
 
-現在のサイトは **index.html** です。
+生成りの紙と墨色、縦書き、余白を使ったポートフォリオです。
+`portfolio-3d` の6作品の画像・動画・プロフィール写真と、添付の `eve-jpop.jpeg` を取り込んでいます。
 
-## フォルダ案内
+## 起動
 
-| 場所 | 内容 |
-| --- | --- |
-| index.html | 現行サイトの入口。普段はこちらを編集 |
-| src/ | デザイン・画面切り替え・動画再生のコード |
-| public/ | サイトが実際に読み込む画像・動画 |
-| materials/ | 録画の原本・プロフィール写真の原本 |
-| docs/ | 機能要件・面接用の説明資料 |
-| archive/ | 保存しているA案 |
-| dist/ | ビルドで生成される公開用ファイル |
+```powershell
+npm.cmd install
+npm.cmd run dev
+```
 
-## 起動・ビルド
+表示されたローカルURLを開いてください。PowerShellでは `npm.cmd` を使用できます。
 
-- npm run dev -- --host 127.0.0.1 --port 5175
-- 確認URL: http://127.0.0.1:5175/portfolio_ver1/
-- npm run build
+## ビルド
 
-## ページ
+```powershell
+npm.cmd run build
+npm.cmd run preview
+```
 
-- index.html：現行版
-- studio.html：現行デザインの別入口（共通コード・素材を使用）
-- book.html：保存しているA案
-- page-turn.html：以前のめくりモーション版
+`dist/` にHTML・CSS・JavaScriptと公開素材が出力されます。
+画像・動画のパスとビルド出力は相対パスにしているため、GitHub Pagesの `/portfolio_ver1/` 配下でも表示できます。
 
 ## 編集する場所
 
-- 見出し・紹介文・リンク：index.html（studio.htmlも同内容を反映）
-- 全体の見た目：src/studio.css
-- 作品一覧のレイアウト：src/timeline.css
-- 各作品バナー：src/project-covers.css
-- スマホ・タブレットのレイアウト：src/responsive.css
-- 画面切り替え：src/timeline.js
-- 動画の再生制御：src/demo-video.js
+- `index.html`：作品紹介、画面ギャラリー、リンク、プロフィール
+- `src/wabi.css`：わびさびのデザインとレスポンシブ表示
+- `src/work-banners.css`：元プロジェクトから移植した6作品のバナー。各作品の冒頭に表示
+- `src/work-transitions.css` / `src/work-page-switch.js`：表紙から制作ノートへの画面切り替え
+- `src/wabi.js`：押したときだけ再生する操作デモ、フェード
+- `public/profile/`：プロフィール写真
+- `public/work01-eve/` 〜 `public/work06-eve-player/`：作品の画像と動画
+- `public/cover-assets/`：スマートフォン画面などの補助素材
 
-## 動画
+追加画面は各作品の「ほかの画面を見る」から開けます。画像を選ぶと原寸ファイルを別タブで表示します。
+操作デモはボタンを押すまで動画を読み込まず、音声をミュートして再生します。
 
-録画原本は materials/recordings/、表示用は public/ 内です。
-表示用は Eve・Lumos・Sukima・Beauty が各作品名のMP4、Hacolioが work05-hacolio/hacolio.mp4 です。
-HacolioのMOV原本は、ブラウザ向けにMP4へ変換しています。
-原本を追加・変更しただけでは、表示用動画は更新されません。
+各作品は表紙と制作ノートに分かれています。表紙で一度下へスクロールすると、約1秒で画面全体が上下にスライドしてノートへ切り替わります。ノート本文は通常どおりスクロールでき、先頭で上へ操作すると表紙に戻ります。タッチ操作、PageDown・PageUpキーにも対応します。「制作ノートを開く」「表紙に戻る」でも切り替わります。OSの「視差効果を減らす」設定では、アニメーションなしで切り替わります。
 
-## 保管データ
+速いスクロールや慣性スクロールでもページの境界で止まるよう、切り替え中と操作が落ち着くまでスクロール位置を固定しています。境界処理と固定解除は `node --test` で確認できます。
 
-archive/a-book-preserved/ にA案を保存しています。
-録画・写真の原本は materials/ に残しています。
-一時データ、旧動画、試作、重複バックアップ、制作時だけの補助スクリプトは整理済みです。
-
-## GitHub
-
-新版リポジトリ： https://github.com/letons11mrty/portfolio_ver1
-公開パス： /portfolio_ver1/
-materials/・docs/・archive/ はローカル保管用のためGit管理から除外しています。
-dist/ は npm run build で再生成します。
-
-## レスポンシブの動作
-
-スマホでは年表を上部にまとめ、作品バナーを全幅で表示します。画面幅や高さにかかわらず、作品スライドとプロフィール・Aboutへの画面切り替えを維持します。低い画面では見出しや補助情報をコンパクトにして表示領域を確保します。
+元の `portfolio-3d` は変更していません。作品バナーのHTML・CSSを移植し、ページ全体はこのフォルダのわびさびデザインを使っています。ページの境界では1回の操作で画面全体を切り替え、制作ノートの本文は通常のスクロールで読めます。
