@@ -12,8 +12,9 @@ document.querySelectorAll('.hacolio-detail-image, .sukima-detail-video, .project
   const allowed = () => visible && !document.hidden && !userPaused && !reduced.matches;
   const update = () => {
     const playing = !userPaused && (!video.paused || restarting);
-    button.textContent = playing ? 'Pause' : 'Play';
+    button.dataset.playing = String(playing);
     button.setAttribute('aria-label', playing ? 'デモを一時停止' : 'デモを再生');
+    button.title = playing ? '一時停止' : '再生';
   };
   const cancelRestart = () => {
     generation++;
