@@ -23,6 +23,8 @@ html.demo-invite-open { overflow: hidden; }
 .demo-invite-dialog .eyebrow { color: var(--muted); font-size: 10px; letter-spacing: .2em; }
 .demo-invite-dialog p { font-size: 13px; line-height: 1.95; }
 .demo-invite-device-note { margin-top: 12px; color: var(--accent); }
+.demo-invite-network-note { margin-top: 12px; color: var(--muted); }
+.demo-invite-network-note a { text-decoration: underline; text-underline-offset: 3px; }
 .demo-invite-form { display: grid; gap: 12px; margin-top: 24px; }
 .demo-invite-form label { font-size: 13px; }
 .demo-invite-form input { width: 100%; min-height: 48px; padding: 12px; font: inherit; font-size: 16px; color: var(--ink); background: #fff8; border: 1px solid var(--line); border-radius: 3px; }

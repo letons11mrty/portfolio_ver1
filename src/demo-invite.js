@@ -98,7 +98,7 @@ if ((configured || import.meta.env.DEV) && dialog) {
       status.textContent = '招待メールを送信しました。15分以内にメールのリンクを開いてください。届かない場合は迷惑メールフォルダーもご確認ください。';
     } catch (error) {
       status.textContent = error instanceof Error && error.name !== 'TimeoutError' && error.name !== 'TypeError'
-        ? error.message : '接続できませんでした。時間をおいて、もう一度お試しください。';
+        ? error.message : '接続できませんでした。企業・学校のネットワークでは、セキュリティ設定により接続が制限される場合があります。申込画面内のFigmaの画面資料もご覧いただけます。';
     } finally {
       sending = false;
       submit.textContent = '招待メールを受け取る';
