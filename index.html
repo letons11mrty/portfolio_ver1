@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="./src/wabi.css" />
     <link rel="stylesheet" href="./src/work-banners.css" />
     <link rel="stylesheet" href="./src/work-transitions.css" />
+    <link rel="stylesheet" href="./src/demo-invite.css" />
   </head>
   <body>
     <header class="w-head">
@@ -504,6 +505,7 @@
             </div>
           </details>
           <a class="w-link" href="https://www.figma.com/design/1gaC7JeLTs4Cy8SH2Tpwhn/Hacolio-preview?node-id=165-2098" target="_blank" rel="noopener">Figmaで画面設計を見る</a>
+          <button class="w-link demo-request-link" type="button" data-demo-open hidden>アプリを試す <span aria-hidden="true">↗</span></button>
         </div>
         </div>
       </article>
@@ -541,6 +543,21 @@
       </section>
     </main>
 
+    <dialog class="demo-invite-dialog" id="demo-invite-dialog" aria-labelledby="demo-invite-title" aria-describedby="demo-invite-description">
+      <button class="demo-invite-close" type="button" data-demo-close aria-label="閉じる"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.4"/></svg></button>
+      <p class="eyebrow">HACOLIO / DEMO</p>
+      <h2 id="demo-invite-title">Hacolioを試してみる</h2>
+      <p id="demo-invite-description">メールで招待リンクをお送りします。あなた専用のデモ用アカウントで、24時間お試しいただけます。</p>
+      <form class="demo-invite-form">
+        <label for="demo-invite-email">メールアドレス</label>
+        <input id="demo-invite-email" type="email" name="email" autocomplete="email" maxlength="254" required>
+        <div class="demo-invite-challenge" data-demo-challenge></div>
+        <button class="demo-invite-submit" type="submit" disabled>招待メールを受け取る</button>
+      </form>
+      <p class="demo-invite-status" data-demo-status role="status" aria-live="polite"></p>
+      <p class="demo-invite-privacy">メールアドレスは招待メールの送信に使用し、アプリには保存しません。デモでは写真・AIなど一部の機能は利用できません。</p>
+    </dialog>
     <script type="module" src="./src/wabi.js"></script>
+    <script type="module" src="./src/demo-invite.js"></script>
   </body>
 </html>

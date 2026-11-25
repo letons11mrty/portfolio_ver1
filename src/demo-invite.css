@@ -1,0 +1,35 @@
+.demo-request-link[hidden], .demo-invite-form[hidden] { display: none; }
+html.demo-invite-open { overflow: hidden; }
+.details .demo-request-link { display: flex; background: none; color: inherit; cursor: pointer; margin-top: 4px; }
+.w-link.demo-request-link { display: block; background: none; color: inherit; cursor: pointer; border-width: 0 0 1px; padding: 0 0 4px; font: inherit; font-size: 12px; letter-spacing: .2em; }
+.w-link.demo-request-link[hidden] { display: none; }
+.w-link.demo-request-link:hover { color: var(--accent); }
+.demo-invite-dialog {
+  width: min(480px, calc(100vw - 32px));
+  max-height: calc(100svh - 48px);
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 38px;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 24px 80px #0002;
+  font-family: var(--font-body, var(--gothic, sans-serif));
+}
+.demo-invite-dialog::backdrop { background: #20201e66; backdrop-filter: blur(3px); }
+.demo-invite-close { position: absolute; right: 12px; top: 12px; width: 44px; height: 44px; display: grid; place-items: center; border: 0; background: transparent; cursor: pointer; color: inherit; }
+.demo-invite-close svg { width: 18px; height: 18px; }
+.demo-invite-dialog h2 { font-size: 26px; line-height: 1.6; font-weight: 500; margin: 12px 0 18px; }
+.demo-invite-dialog .eyebrow { color: var(--muted); font-size: 10px; letter-spacing: .2em; }
+.demo-invite-dialog p { font-size: 13px; line-height: 1.95; }
+.demo-invite-form { display: grid; gap: 12px; margin-top: 24px; }
+.demo-invite-form label { font-size: 13px; }
+.demo-invite-form input { width: 100%; min-height: 48px; padding: 12px; font: inherit; font-size: 16px; color: var(--ink); background: #fff8; border: 1px solid var(--line); border-radius: 3px; }
+.demo-invite-submit { padding: 14px 18px; min-height: 48px; border: 0; border-radius: 3px; background: var(--ink); color: var(--paper); font: inherit; font-size: 14px; cursor: pointer; }
+.demo-invite-submit:disabled { opacity: .45; cursor: default; }
+.demo-invite-dialog :is(input,button):focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.demo-invite-privacy { color: var(--muted); margin-top: 22px; }
+.demo-invite-status { margin: 20px 0 0; color: var(--accent); }
+.demo-invite-status:empty { display: none; }
+.demo-invite-challenge { min-height: 65px; width: 100%; }
+@media (max-width: 600px) { .demo-invite-dialog { padding: 32px 22px; } .demo-invite-dialog h2 { font-size: 23px; } }

@@ -24,6 +24,8 @@ npm.cmd run preview
 
 ## 編集する場所
 
+Hacolioの「アプリを試す」はメールで24時間のデモ用アカウントへ招待します。公開に必要な設定とデモ専用サーバーの手順は [integrations/hacolio-demo/README.md](integrations/hacolio-demo/README.md) を参照してください。公開設定が未入力の場合、公開ビルドではボタンを非表示にし、開発時は送信できないプレビューを表示します。
+
 - `index.html`：作品紹介、画面ギャラリー、リンク、プロフィール
 - `src/wabi.css`：わびさびのデザインとレスポンシブ表示
 - `src/work-banners.css`：元プロジェクトから移植した6作品のバナー。各作品の冒頭に表示

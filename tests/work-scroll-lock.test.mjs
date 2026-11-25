@@ -11,6 +11,7 @@ function setup() {
   const timers = new Map();
   let id = 0;
   let time = 0;
+  let dialogOpen = false;
   class Element { closest() { return null; } }
   const media = { matches: false, addEventListener() {} };
   const window = {
@@ -19,7 +20,8 @@ function setup() {
     addEventListener: (name, handler) => listeners.set(name, handler),
   };
   const document = {
-    querySelector: () => ({ offsetHeight: 72 }), querySelectorAll: () => [],
+    querySelector: selector => selector === '.w-head' ? { offsetHeight: 72 } : selector === 'dialog[open]' && dialogOpen ? {} : null,
+    querySelectorAll: () => [],
     addEventListener: (name, handler) => listeners.set(`document:${name}`, handler),
     documentElement: { classList: { add: name => classes.add(name), remove: name => classes.delete(name) } },
   };
@@ -41,6 +43,7 @@ function setup() {
   };
   return {
     context, window, listeners, classes, media, item, Element,
+    openDialog: () => { dialogOpen = true; },
     advance: milliseconds => {
       time += milliseconds;
       const callbacks = [...frames.values()];
@@ -90,5 +93,19 @@ test('an explicit navigation link releases the momentum hold', () => {
   const target = new env.Element();
   target.closest = () => link;
   env.listeners.get('document:click')({ target });
+  assert.equal(env.classes.has('is-page-moving'), false);
+});
+
+test('an open invitation dialog keeps wheel, touch and page keys out of page navigation', () => {
+  const env = setup();
+  env.openDialog();
+  let pageSteps = 0;
+  env.context.nextStep = () => { pageSteps++; return null; };
+  const event = { deltaY: 300, deltaX: 0, target: new env.Element(), touches: [{ clientX: 0, clientY: 300 }], preventDefault() { throw Error('Dialog input intercepted'); } };
+  env.listeners.get('wheel')(event);
+  env.listeners.get('touchstart')(event);
+  env.listeners.get('touchmove')({ ...event, touches: [{ clientX: 0, clientY: 0 }] });
+  env.listeners.get('keydown')({ ...event, key: 'PageDown' });
+  assert.equal(pageSteps, 0);
   assert.equal(env.classes.has('is-page-moving'), false);
 });

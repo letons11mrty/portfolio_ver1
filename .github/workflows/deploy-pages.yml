@@ -28,6 +28,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build
+        env:
+          VITE_HACOLIO_DEMO_URL: ${{ vars.HACOLIO_DEMO_URL }}
+          VITE_TURNSTILE_SITE_KEY: ${{ vars.TURNSTILE_SITE_KEY }}
         run: npm run build
       - name: Configure Pages
         uses: actions/configure-pages@v5

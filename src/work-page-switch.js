@@ -203,6 +203,7 @@ function runStep(step) {
 }
 
 window.addEventListener('wheel', event => {
+  if (document.querySelector('dialog[open]')) return;
   if (event.ctrlKey || Math.abs(event.deltaX) > Math.abs(event.deltaY) || !event.deltaY) return;
   const now = performance.now();
   const fresh = now - lastWheel > gesturePause;
@@ -227,11 +228,13 @@ window.addEventListener('wheel', event => {
 }, { passive: false });
 
 window.addEventListener('touchstart', event => {
+  if (document.querySelector('dialog[open]')) { touch = null; return; }
   if (!motion) releaseScroll();
   touch = event.touches.length === 1 && !interactive(event.target)
     ? { x: event.touches[0].clientX, y: event.touches[0].clientY, used: false } : null;
 }, { passive: true });
 window.addEventListener('touchmove', event => {
+  if (document.querySelector('dialog[open]')) return;
   if (!touch || event.touches.length !== 1) return;
   nativeInputUntil = performance.now() + gesturePause;
   const dy = touch.y - event.touches[0].clientY;
@@ -267,6 +270,7 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 window.addEventListener('keydown', event => {
+  if (document.querySelector('dialog[open]')) return;
   if (event.key === 'Escape' && motion) { motion.finish(); return; }
   if (event.ctrlKey || event.metaKey || event.altKey || interactive(event.target) || (event.target instanceof Element && event.target.closest('a, button, summary'))) return;
   const direction = ['ArrowDown', 'PageDown', ' '].includes(event.key) ? (event.key === ' ' && event.shiftKey ? -1 : 1)
